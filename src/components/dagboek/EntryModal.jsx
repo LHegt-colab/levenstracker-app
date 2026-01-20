@@ -56,11 +56,14 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
         tags,
       };
 
+      let result;
       if (entry) {
-        await updateDagboekEntry(date, entry.id, entryData);
+        result = await updateDagboekEntry(date, entry.id, entryData);
       } else {
-        await addDagboekEntry(date, entryData);
+        result = await addDagboekEntry(date, entryData);
       }
+
+      if (result && result.error) throw result.error;
 
       onClose();
     } catch (error) {

@@ -41,11 +41,14 @@ export default function ReflectieModal({ isOpen, onClose, date, existing }) {
         tomorrow,
       };
 
+      let result;
       if (existing) {
-        await updateDailyReflectie(date, reflectionData);
+        result = await updateDailyReflectie(date, reflectionData);
       } else {
-        await addDailyReflectie(date, reflectionData);
+        result = await addDailyReflectie(date, reflectionData);
       }
+
+      if (result && result.error) throw result.error;
 
       onClose();
     } catch (error) {

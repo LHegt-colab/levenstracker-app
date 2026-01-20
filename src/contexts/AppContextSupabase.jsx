@@ -143,8 +143,8 @@ export const AppProvider = ({ children }) => {
 
     // --- DAGBOEK ---
     const addDagboekEntry = async (date, entry) => {
-        if (!session) return;
-        const { error } = await supabase.from('dagboek_entries').insert({
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('dagboek_entries').insert({
             user_id: session.user.id,
             date,
             content: entry.content,
@@ -152,81 +152,91 @@ export const AppProvider = ({ children }) => {
             tags: entry.tags,
             timestamp: new Date()
         });
-        if (!error) loadData();
+        if (!result.error) loadData();
+        return result;
     };
 
     const updateDagboekEntry = async (date, entryId, updates) => {
-        if (!session) return;
-        const { error } = await supabase.from('dagboek_entries').update(updates).eq('id', entryId);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('dagboek_entries').update(updates).eq('id', entryId);
+        if (!result.error) loadData();
+        return result;
     };
 
     const deleteDagboekEntry = async (date, entryId) => {
-        if (!session) return;
-        const { error } = await supabase.from('dagboek_entries').delete().eq('id', entryId);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('dagboek_entries').delete().eq('id', entryId);
+        if (!result.error) loadData();
+        return result;
     };
 
     const setDaySummary = async (date, summary) => {
-        if (!session) return;
-        const { error } = await supabase.from('dagboek_summaries').upsert({
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('dagboek_summaries').upsert({
             user_id: session.user.id,
             date,
             summary
         }, { onConflict: 'user_id, date' });
-        if (!error) loadData();
+        if (!result.error) loadData();
+        return result;
     };
 
     // --- VERZAMELING ---
     const addVerzamelingItem = async (item) => {
-        if (!session) return;
-        const { error } = await supabase.from('verzameling_items').insert({
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('verzameling_items').insert({
             user_id: session.user.id,
             ...item
         });
-        if (!error) loadData();
+        if (!result.error) loadData();
+        return result;
     };
 
     const updateVerzamelingItem = async (id, updates) => {
-        if (!session) return;
-        const { error } = await supabase.from('verzameling_items').update(updates).eq('id', id);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('verzameling_items').update(updates).eq('id', id);
+        if (!result.error) loadData();
+        return result;
     };
 
     const deleteVerzamelingItem = async (id) => {
-        if (!session) return;
-        const { error } = await supabase.from('verzameling_items').delete().eq('id', id);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('verzameling_items').delete().eq('id', id);
+        if (!result.error) loadData();
+        return result;
     };
 
     const addVerzamelingCategory = async (categoryName) => {
-        if (!session) return;
-        // Check if exists first? Or just insert.
-        const { error } = await supabase.from('verzameling_categories').insert({
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('verzameling_categories').insert({
             user_id: session.user.id,
             name: categoryName
         });
-        if (!error) loadData();
+        if (!result.error) loadData();
+        return result;
     };
 
     // --- IDEEEN ---
     const addIdee = async (idea) => {
-        if (!session) return;
-        const { error } = await supabase.from('ideeen').insert({
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('ideeen').insert({
             user_id: session.user.id,
             ...idea
         });
-        if (!error) loadData();
+        if (!result.error) loadData();
+        return result;
     };
     const updateIdee = async (id, updates) => {
-        if (!session) return;
-        const { error } = await supabase.from('ideeen').update(updates).eq('id', id);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('ideeen').update(updates).eq('id', id);
+        if (!result.error) loadData();
+        return result;
     };
     const deleteIdee = async (id) => {
-        if (!session) return;
-        const { error } = await supabase.from('ideeen').delete().eq('id', id);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('ideeen').delete().eq('id', id);
+        if (!result.error) loadData();
+        return result;
     };
 
     // --- KALENDER ---
@@ -322,23 +332,26 @@ export const AppProvider = ({ children }) => {
 
     // --- REFLECTIES ---
     const performAddReflection = async (reflection, type) => {
-        if (!session) return;
-        const { error } = await supabase.from('reflecties').insert({
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('reflecties').insert({
             user_id: session.user.id,
             type,
             ...reflection
         });
-        if (!error) loadData();
+        if (!result.error) loadData();
+        return result;
     };
     const performUpdateReflection = async (id, updates) => {
-        if (!session) return;
-        const { error } = await supabase.from('reflecties').update(updates).eq('id', id);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('reflecties').update(updates).eq('id', id);
+        if (!result.error) loadData();
+        return result;
     };
     const performDeleteReflection = async (id) => {
-        if (!session) return;
-        const { error } = await supabase.from('reflecties').delete().eq('id', id);
-        if (!error) loadData();
+        if (!session) return { error: { message: 'No active session' } };
+        const result = await supabase.from('reflecties').delete().eq('id', id);
+        if (!result.error) loadData();
+        return result;
     };
 
     const addDailyReflectie = (r) => performAddReflection(r, 'daily');

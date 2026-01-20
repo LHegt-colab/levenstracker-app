@@ -48,11 +48,14 @@ export default function IdeeenModal({ isOpen, onClose, item }) {
         tags,
       };
 
+      let result;
       if (item) {
-        await updateIdee(item.id, ideeData);
+        result = await updateIdee(item.id, ideeData);
       } else {
-        await addIdee(ideeData);
+        result = await addIdee(ideeData);
       }
+
+      if (result && result.error) throw result.error;
 
       onClose();
     } catch (error) {
