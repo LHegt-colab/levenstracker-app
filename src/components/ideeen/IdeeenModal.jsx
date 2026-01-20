@@ -36,24 +36,29 @@ export default function IdeeenModal({ isOpen, onClose, item }) {
     }
   }, [item, isOpen, data.ideeen.categories]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const ideeData = {
-      title,
-      description,
-      categoryId,
-      status,
-      tags,
-    };
+    try {
+      const ideeData = {
+        title,
+        description,
+        categoryId,
+        status,
+        tags,
+      };
 
-    if (item) {
-      updateIdee(item.id, ideeData);
-    } else {
-      addIdee(ideeData);
+      if (item) {
+        await updateIdee(item.id, ideeData);
+      } else {
+        await addIdee(ideeData);
+      }
+
+      onClose();
+    } catch (error) {
+      console.error("Fout bij opslaan idee:", error);
+      alert("Er ging iets mis bij het opslaan. Probeer het opnieuw.");
     }
-
-    onClose();
   };
 
   const addTag = () => {

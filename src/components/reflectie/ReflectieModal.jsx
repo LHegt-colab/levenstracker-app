@@ -29,24 +29,29 @@ export default function ReflectieModal({ isOpen, onClose, date, existing }) {
     }
   }, [existing, isOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const reflectionData = {
-      gratitude,
-      highlights,
-      challenges,
-      learnings,
-      tomorrow,
-    };
+    try {
+      const reflectionData = {
+        gratitude,
+        highlights,
+        challenges,
+        learnings,
+        tomorrow,
+      };
 
-    if (existing) {
-      updateDailyReflectie(date, reflectionData);
-    } else {
-      addDailyReflectie(date, reflectionData);
+      if (existing) {
+        await updateDailyReflectie(date, reflectionData);
+      } else {
+        await addDailyReflectie(date, reflectionData);
+      }
+
+      onClose();
+    } catch (error) {
+      console.error("Fout bij opslaan reflectie:", error);
+      alert("Er ging iets mis bij het opslaan. Probeer het opnieuw.");
     }
-
-    onClose();
   };
 
   const addGratitude = () => {

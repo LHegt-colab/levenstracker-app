@@ -42,26 +42,31 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
     }
   }, [entry, isOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const entryData = {
-      content,
-      mood,
-      energy,
-      stress,
-      sleep,
-      sport: { done: sportDone, activity: sportActivity },
-      tags,
-    };
+    try {
+      const entryData = {
+        content,
+        mood,
+        energy,
+        stress,
+        sleep,
+        sport: { done: sportDone, activity: sportActivity },
+        tags,
+      };
 
-    if (entry) {
-      updateDagboekEntry(date, entry.id, entryData);
-    } else {
-      addDagboekEntry(date, entryData);
+      if (entry) {
+        await updateDagboekEntry(date, entry.id, entryData);
+      } else {
+        await addDagboekEntry(date, entryData);
+      }
+
+      onClose();
+    } catch (error) {
+      console.error("Fout bij opslaan entry:", error);
+      alert("Er ging iets mis bij het opslaan. Probeer het opnieuw.");
     }
-
-    onClose();
   };
 
   const toggleTag = (tag) => {
