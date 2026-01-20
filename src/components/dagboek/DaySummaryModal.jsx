@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Combine, Sparkles } from 'lucide-react';
 
 export default function DaySummaryModal({ isOpen, onClose, date, entries, existingSummary }) {

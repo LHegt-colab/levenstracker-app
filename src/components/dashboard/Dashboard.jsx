@@ -1,4 +1,4 @@
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { getDateString, formatDate, getRelativeDateText } from '../../utils/dateHelpers';
 import { Calendar, Flame, BookOpen, Lightbulb, Target, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -176,11 +176,10 @@ export default function Dashboard() {
                   <div key={idea.id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                     <div className="flex items-center justify-between">
                       <p className="font-medium">{idea.title}</p>
-                      <span className={`px-2 py-1 text-xs rounded ${
-                        idea.priority === 'high' ? 'bg-danger text-white' :
-                        idea.priority === 'medium' ? 'bg-warning text-white' :
-                        'bg-gray-300 dark:bg-gray-600'
-                      }`}>
+                      <span className={`px-2 py-1 text-xs rounded ${idea.priority === 'high' ? 'bg-danger text-white' :
+                          idea.priority === 'medium' ? 'bg-warning text-white' :
+                            'bg-gray-300 dark:bg-gray-600'
+                        }`}>
                         {idea.priority === 'high' ? 'Hoog' : idea.priority === 'medium' ? 'Medium' : 'Laag'}
                       </span>
                     </div>

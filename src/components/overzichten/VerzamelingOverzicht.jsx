@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Copy, Download } from 'lucide-react';
 
 const MONTH_NAMES = [
@@ -113,21 +113,19 @@ export default function VerzamelingOverzicht() {
         <div className="flex gap-2 mb-4">
           <button
             onClick={() => setPeriodType('dates')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              periodType === 'dates'
+            className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'dates'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700'
-            }`}
+              }`}
           >
             Datums
           </button>
           <button
             onClick={() => setPeriodType('months')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              periodType === 'months'
+            className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'months'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700'
-            }`}
+              }`}
           >
             Maanden
           </button>

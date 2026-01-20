@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 
 const MEAL_TYPES = ['Ontbijt', 'Lunch', 'Diner', 'Snack', 'Drinken'];
 const UNITS = ['gram', 'ml', 'stuks', 'portie', 'eetlepel', 'theelepel', 'kopje'];

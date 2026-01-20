@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 
 const CATEGORIES = ['Afspraak', 'Verjaardag', 'Deadline', 'Herinnering', 'Event', 'Overig'];
 const COLORS = ['#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6', '#EC4899'];

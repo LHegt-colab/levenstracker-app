@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import Calendar from 'react-calendar';
 import { Plus, Repeat, Edit2, Trash2 } from 'lucide-react';
 import EventModal from './EventModal';
@@ -47,14 +47,14 @@ export default function Kalender() {
 
       case 'monthly':
         const monthsDiff = (targetDate.getFullYear() - eventDate.getFullYear()) * 12 +
-                          (targetDate.getMonth() - eventDate.getMonth());
+          (targetDate.getMonth() - eventDate.getMonth());
         return monthsDiff % interval === 0 && targetDate.getDate() === eventDate.getDate();
 
       case 'yearly':
         const yearsDiff = targetDate.getFullYear() - eventDate.getFullYear();
         return yearsDiff % interval === 0 &&
-               targetDate.getMonth() === eventDate.getMonth() &&
-               targetDate.getDate() === eventDate.getDate();
+          targetDate.getMonth() === eventDate.getMonth() &&
+          targetDate.getDate() === eventDate.getDate();
 
       default:
         return false;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Copy, Download } from 'lucide-react';
 import { getDateString, formatDate } from '../../utils/dateHelpers';
 
@@ -172,31 +172,28 @@ export default function DagboekOverzicht() {
         <div className="flex gap-2 mb-4">
           <button
             onClick={() => setPeriodType('dates')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              periodType === 'dates'
+            className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'dates'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Datums
           </button>
           <button
             onClick={() => setPeriodType('weeks')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              periodType === 'weeks'
+            className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'weeks'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Weken
           </button>
           <button
             onClick={() => setPeriodType('months')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              periodType === 'months'
+            className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'months'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Maanden
           </button>

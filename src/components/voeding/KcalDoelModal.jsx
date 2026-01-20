@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Target } from 'lucide-react';
 
 export default function KcalDoelModal({ isOpen, onClose }) {
@@ -67,11 +67,10 @@ export default function KcalDoelModal({ isOpen, onClose }) {
                 key={preset.value}
                 type="button"
                 onClick={() => setTargetKcalState(preset.value)}
-                className={`px-3 py-2 rounded-lg text-sm transition-colors ${
-                  parseInt(targetKcal) === preset.value
+                className={`px-3 py-2 rounded-lg text-sm transition-colors ${parseInt(targetKcal) === preset.value
                     ? 'bg-primary text-white'
                     : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }`}
+                  }`}
               >
                 <div className="font-medium">{preset.label}</div>
                 <div className="text-xs opacity-80">{preset.value} kcal</div>

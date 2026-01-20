@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { getDateString, formatDate } from '../../utils/dateHelpers';

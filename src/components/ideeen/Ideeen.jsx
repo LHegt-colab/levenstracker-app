@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Plus, Trash2, Edit2 } from 'lucide-react';
 import IdeeenModal from './IdeeenModal';
 
@@ -62,11 +62,10 @@ export default function Ideeen() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              selectedCategory === 'all'
+            className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'all'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Alle Ideeën ({data.ideeen.items.length})
           </button>
@@ -76,11 +75,10 @@ export default function Ideeen() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  selectedCategory === cat.id
+                className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === cat.id
                     ? 'text-white'
                     : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }`}
+                  }`}
                 style={selectedCategory === cat.id ? { backgroundColor: cat.color } : {}}
               >
                 {cat.name} ({count})

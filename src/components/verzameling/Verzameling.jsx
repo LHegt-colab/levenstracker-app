@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Plus, Trash2, ExternalLink, Search } from 'lucide-react';
 import VerzamelingModal from './VerzamelingModal';
 
@@ -13,7 +13,7 @@ export default function Verzameling() {
   const filteredItems = data.verzameling.items.filter(item => {
     const matchesCategory = selectedCategory === 'all' || item.categoryId === selectedCategory;
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description?.toLowerCase().includes(searchTerm.toLowerCase());
+      item.description?.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -65,11 +65,10 @@ export default function Verzameling() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              selectedCategory === 'all'
+            className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'all'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Alle ({data.verzameling.items.length})
           </button>
@@ -79,11 +78,10 @@ export default function Verzameling() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-lg transition-colors ${
-                  selectedCategory === cat.id
+                className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === cat.id
                     ? 'text-white'
                     : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }`}
+                  }`}
                 style={selectedCategory === cat.id ? { backgroundColor: cat.color } : {}}
               >
                 {cat.name} ({count})

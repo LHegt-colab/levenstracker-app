@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { getDateString, formatDate } from '../../utils/dateHelpers';
 import { Calendar, Edit2, Trash2, ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import ReflectieModal from './ReflectieModal';
@@ -487,31 +487,28 @@ export default function Reflectie() {
         <div className="flex gap-2">
           <button
             onClick={() => setViewType('daily')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              viewType === 'daily'
+            className={`px-4 py-2 rounded-lg transition-colors ${viewType === 'daily'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Dagelijks
           </button>
           <button
             onClick={() => setViewType('weekly')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              viewType === 'weekly'
+            className={`px-4 py-2 rounded-lg transition-colors ${viewType === 'weekly'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Wekelijks
           </button>
           <button
             onClick={() => setViewType('monthly')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              viewType === 'monthly'
+            className={`px-4 py-2 rounded-lg transition-colors ${viewType === 'monthly'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Maandelijks
           </button>

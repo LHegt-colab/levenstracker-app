@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Smile, Zap, Frown, Moon, X } from 'lucide-react';
 
 const AVAILABLE_TAGS = ['Werk', 'Privé', 'Gezondheid', 'Hobby', 'Familie', 'Sociaal'];
@@ -178,11 +178,10 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
                 key={tag}
                 type="button"
                 onClick={() => toggleTag(tag)}
-                className={`px-3 py-1 rounded-full text-sm transition-colors duration-200 ${
-                  tags.includes(tag)
+                className={`px-3 py-1 rounded-full text-sm transition-colors duration-200 ${tags.includes(tag)
                     ? 'bg-primary text-white'
                     : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }`}
+                  }`}
               >
                 {tag}
               </button>

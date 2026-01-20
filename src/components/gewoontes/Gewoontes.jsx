@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { getDateString, formatDate } from '../../utils/dateHelpers';
 import { Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -104,19 +104,17 @@ export default function Gewoontes() {
             return (
               <div
                 key={habit.id}
-                className={`p-4 rounded-lg border-2 transition-all duration-200 cursor-pointer ${
-                  isCompleted
+                className={`p-4 rounded-lg border-2 transition-all duration-200 cursor-pointer ${isCompleted
                     ? 'border-success bg-success bg-opacity-10'
                     : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
-                }`}
+                  }`}
                 onClick={() => toggleHabit(habit.id)}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
-                        isCompleted ? 'bg-success text-white' : 'bg-gray-200 dark:bg-gray-700'
-                      }`}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${isCompleted ? 'bg-success text-white' : 'bg-gray-200 dark:bg-gray-700'
+                        }`}
                     >
                       {isCompleted ? <Check size={24} /> : <X size={24} />}
                     </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { getDateString, formatDate } from '../../utils/dateHelpers';
@@ -123,10 +123,9 @@ export default function Voeding() {
                 <div className="text-sm text-gray-600 dark:text-gray-400">Streef Kcal</div>
               </div>
               <div className="text-center">
-                <div className={`text-3xl font-bold ${
-                  percentageOfTarget < 80 ? 'text-warning' :
-                  percentageOfTarget > 120 ? 'text-danger' : 'text-success'
-                }`}>
+                <div className={`text-3xl font-bold ${percentageOfTarget < 80 ? 'text-warning' :
+                    percentageOfTarget > 120 ? 'text-danger' : 'text-success'
+                  }`}>
                   {percentageOfTarget}%
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Van Doel</div>

@@ -1,6 +1,6 @@
 import { formatTime } from '../../utils/dateHelpers';
 import { Edit2, Trash2, Smile, Zap, Frown, Moon } from 'lucide-react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 
 const moodIcons = {
   mood: { icon: Smile, label: 'Stemming', color: '#3B82F6' },

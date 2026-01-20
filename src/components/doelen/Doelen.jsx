@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp } from '../../contexts/AppContext';
+import { useApp } from '../../contexts/AppContextSupabase';
 import { Plus, Trash2, Edit2, Target, CheckCircle2, Circle } from 'lucide-react';
 import DoelenModal from './DoelenModal';
 
@@ -54,31 +54,28 @@ export default function Doelen() {
         <div className="flex gap-2">
           <button
             onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              filter === 'all'
+            className={`px-4 py-2 rounded-lg transition-colors ${filter === 'all'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Alle ({data.doelen.goals.length})
           </button>
           <button
             onClick={() => setFilter('active')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              filter === 'active'
+            className={`px-4 py-2 rounded-lg transition-colors ${filter === 'active'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Actief ({data.doelen.goals.filter(g => !g.completed).length})
           </button>
           <button
             onClick={() => setFilter('completed')}
-            className={`px-4 py-2 rounded-lg transition-colors ${
-              filter === 'completed'
+            className={`px-4 py-2 rounded-lg transition-colors ${filter === 'completed'
                 ? 'bg-primary text-white'
                 : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
-            }`}
+              }`}
           >
             Voltooid ({data.doelen.goals.filter(g => g.completed).length})
           </button>
@@ -137,9 +134,8 @@ export default function Doelen() {
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                       <div
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          goal.completed ? 'bg-success' : 'bg-primary'
-                        }`}
+                        className={`h-2 rounded-full transition-all duration-300 ${goal.completed ? 'bg-success' : 'bg-primary'
+                          }`}
                         style={{ width: `${progress}%` }}
                       ></div>
                     </div>
@@ -164,11 +160,10 @@ export default function Doelen() {
                           <Circle size={20} className="text-gray-400 flex-shrink-0" />
                         )}
                         <span
-                          className={`text-sm ${
-                            milestone.completed
+                          className={`text-sm ${milestone.completed
                               ? 'line-through text-gray-500'
                               : 'text-gray-700 dark:text-gray-300'
-                          }`}
+                            }`}
                         >
                           {milestone.title}
                         </span>
