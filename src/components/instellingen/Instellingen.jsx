@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { APP_VERSION } from '../../version';
 import { useApp } from '../../contexts/AppContextSupabase';
 import { useTheme } from '../../contexts/ThemeContext';
 import { requestNotificationPermission, sendTestNotification } from '../../utils/notifications';
@@ -101,10 +102,13 @@ export default function Instellingen() {
       <div className="card">
         <h2 className="text-xl font-bold mb-4">Over</h2>
         <p className="text-gray-600 dark:text-gray-400">
-          Persoonlijke Levenstracker v1.1.0 (Cloud Edition)
-        </p>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
-          Gebouwd met React, Tailwind CSS en Supabase
+          import {APP_VERSION} from '../../version';
+
+        // ... (imports remain the same, just adding APP_VERSION import if not easy to insert at top, checking context)
+        // actually I'll use multi_replace to be safe with imports.
+
+        // Wait, I need to add the import first.
+
         </p>
       </div>
     </div>
