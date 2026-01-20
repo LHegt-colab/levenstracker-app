@@ -41,6 +41,7 @@ export default function Modal({ isOpen, onClose, title, children, size = 'md', c
         {/* Modal */}
         <div
           className={`relative inline-block w-full ${sizes[size]} p-6 my-8 text-left align-middle transition-all transform bg-white dark:bg-gray-800 shadow-xl rounded-2xl`}
+          onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-4">

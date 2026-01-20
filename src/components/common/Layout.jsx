@@ -1,3 +1,4 @@
+import { APP_VERSION } from '../../version';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';

@@ -57,8 +57,8 @@ export default function Sidebar({ isOpen, onClose }) {
                 to={item.path}
                 onClick={() => onClose && onClose()}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 ${isActive
-                    ? 'bg-primary text-white'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  ? 'bg-primary text-white'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
               >
                 <Icon size={20} />
@@ -67,6 +67,10 @@ export default function Sidebar({ isOpen, onClose }) {
             );
           })}
         </nav>
+
+        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+          <p className="text-xs text-gray-400 text-center">{APP_VERSION}</p>
+        </div>
       </aside>
     </>
   );
