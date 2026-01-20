@@ -11,6 +11,15 @@ export const useApp = () => {
     return context;
 };
 
+// Hardcoded categories since we don't have a table for them yet
+const IDEA_CATEGORIES = [
+    { id: 'app', name: 'App Ideeën', color: '#3B82F6' },
+    { id: 'work', name: 'Werk', color: '#10B981' },
+    { id: 'personal', name: 'Persoonlijk', color: '#8B5CF6' },
+    { id: 'bucketlist', name: 'Bucket List', color: '#F59E0B' },
+    { id: 'other', name: 'Overig', color: '#6B7280' }
+];
+
 export const AppProvider = ({ children }) => {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -18,7 +27,7 @@ export const AppProvider = ({ children }) => {
         settings: { notificationsEnabled: false, targetKcal: 2000 },
         dagboek: { entries: {}, daySummaries: {} },
         verzameling: { items: [], categories: [] },
-        ideeen: { ideas: [] },
+        ideeen: { ideas: [], categories: IDEA_CATEGORIES },
         kalender: { events: [] },
         gewoontes: { habits: [], logs: {} },
         doelen: { goals: [] },
@@ -102,7 +111,7 @@ export const AppProvider = ({ children }) => {
                     items: verzamelingItems || [],
                     categories: verzamelingCategories?.map(c => c.name) || [] // App expects simple array of strings for now? Check usages.
                 },
-                ideeen: { ideas: ideeen || [] },
+                ideeen: { ideas: ideeen || [], categories: IDEA_CATEGORIES },
                 kalender: { events: kalenderEvents || [] },
                 gewoontes: {
                     habits: gewoontes || [],
