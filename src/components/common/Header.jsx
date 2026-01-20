@@ -10,7 +10,7 @@ export default function Header({ onMenuClick }) {
         <div className="flex items-center gap-4">
           <button
             onClick={onMenuClick}
-            className="p-2 -ml-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hidden"
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 md:hidden"
             aria-label="Menu openen"
           >
             <Menu size={24} />
