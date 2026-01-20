@@ -70,7 +70,16 @@ export default function Sidebar({ isOpen, onClose }) {
           })}
         </nav>
 
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
+          {session ? (
+            <div className="text-xs text-center text-green-600 font-medium">
+              ● Ingelogd: {session.user.email}
+            </div>
+          ) : (
+            <div className="text-xs text-center text-red-500 font-bold">
+              ● NIET Ingelogd (Opslaan werkt niet)
+            </div>
+          )}
           <p className="text-xs text-gray-400 text-center">{APP_VERSION}</p>
         </div>
       </aside>
