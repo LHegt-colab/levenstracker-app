@@ -16,6 +16,8 @@ export default function Ideeen() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [editItem, setEditItem] = useState(null);
 
+  if (!data?.ideeen?.ideas) return <div className="p-8 text-center">Loading ideeën...</div>;
+
   const handleEdit = (item) => {
     setEditItem(item);
     setIsModalOpen(true);
@@ -34,7 +36,7 @@ export default function Ideeen() {
 
   const filteredItems = selectedCategory === 'all'
     ? data.ideeen.ideas
-    : data.ideeen.ideas.filter(item => item.categoryId === selectedCategory);
+    : data.ideeen.ideas.filter(item => item.category === selectedCategory);
 
   const groupedByStatus = STATUS_OPTIONS.map(status => ({
     ...status,
@@ -45,6 +47,7 @@ export default function Ideeen() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Creatieve Ideeën</h1>
+        {/* ... (button omitted for brevity) ... */}
         <button
           onClick={() => {
             setEditItem(null);
@@ -70,7 +73,7 @@ export default function Ideeen() {
             Alle Ideeën ({data.ideeen.ideas.length})
           </button>
           {data.ideeen.categories.map(cat => {
-            const count = data.ideeen.ideas.filter(item => item.categoryId === cat.id).length;
+            const count = data.ideeen.ideas.filter(item => item.category === cat.id).length;
             return (
               <button
                 key={cat.id}
@@ -99,13 +102,13 @@ export default function Ideeen() {
                   style={{ backgroundColor: statusGroup.color }}
                 ></div>
                 <h3 className="font-semibold text-lg">
-                  {statusGroup.label} ({statusGroup.items.length})
+                  {statusGroup.label} ({statusGroup.ideas.length})
                 </h3>
               </div>
 
               <div className="space-y-2">
-                {statusGroup.items.map(item => {
-                  const category = getCategoryById(item.categoryId);
+                {statusGroup.ideas.map(item => {
+                  const category = getCategoryById(item.category);
                   return (
                     <div
                       key={item.id}
@@ -156,13 +159,13 @@ export default function Ideeen() {
                       )}
 
                       <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500">
-                        {new Date(item.createdAt).toLocaleDateString('nl-NL')}
+                        {new Date(item.created_at || item.createdAt || new Date()).toLocaleDateString('nl-NL')}
                       </div>
                     </div>
                   );
                 })}
 
-                {statusGroup.items.length === 0 && (
+                {statusGroup.ideas.length === 0 && (
                   <div className="card bg-gray-50 dark:bg-gray-800 text-center py-8 text-sm text-gray-500">
                     Geen ideeën
                   </div>

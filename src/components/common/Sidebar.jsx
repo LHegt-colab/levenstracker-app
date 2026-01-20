@@ -1,6 +1,5 @@
 import { Home, BookOpen, Bookmark, Lightbulb, Calendar, CheckSquare, Target, Eye, FileText, Utensils, Settings, X, Menu } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useApp } from '../../contexts/AppContextSupabase';
 import { APP_VERSION } from '../../version';
 
 const menuItems = [
@@ -17,9 +16,8 @@ const menuItems = [
   { path: '/instellingen', icon: Settings, label: 'Instellingen' },
 ];
 
-export default function Sidebar({ isOpen, onClose }) {
+export default function Sidebar({ isOpen, onClose, session }) {
   const location = useLocation();
-  const { session } = useApp();
 
   const sidebarClasses = `
     fixed inset-y-0 left-0 z-40 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 

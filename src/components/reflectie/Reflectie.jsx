@@ -40,7 +40,9 @@ export default function Reflectie() {
   const handleDelete = () => {
     // eslint-disable-next-line no-restricted-globals
     if (confirm('Weet je zeker dat je deze reflectie wilt verwijderen?')) {
-      deleteDailyReflectie(dateString);
+      if (dailyReflection && dailyReflection.id) {
+        deleteDailyReflectie(dailyReflection.id);
+      }
     }
   };
 
@@ -488,8 +490,8 @@ export default function Reflectie() {
           <button
             onClick={() => setViewType('daily')}
             className={`px-4 py-2 rounded-lg transition-colors ${viewType === 'daily'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             Dagelijks
@@ -497,8 +499,8 @@ export default function Reflectie() {
           <button
             onClick={() => setViewType('weekly')}
             className={`px-4 py-2 rounded-lg transition-colors ${viewType === 'weekly'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             Wekelijks
@@ -506,8 +508,8 @@ export default function Reflectie() {
           <button
             onClick={() => setViewType('monthly')}
             className={`px-4 py-2 rounded-lg transition-colors ${viewType === 'monthly'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             Maandelijks

@@ -41,7 +41,7 @@ export default function MaaltijdModal({ isOpen, onClose, date, meal }) {
       name,
       amount: parseFloat(amount),
       unit,
-      kcal: parseInt(kcal),
+      calories: parseInt(kcal), // Schema expects 'calories', not 'kcal'
       notes,
     };
 

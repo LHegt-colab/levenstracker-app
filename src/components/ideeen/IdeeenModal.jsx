@@ -43,7 +43,10 @@ export default function IdeeenModal({ isOpen, onClose, item }) {
       const ideeData = {
         title,
         description,
-        categoryId,
+        title,
+        description,
+        category: categoryId, // Matches SQL column 'category'
+        status,
         status,
         tags,
       };

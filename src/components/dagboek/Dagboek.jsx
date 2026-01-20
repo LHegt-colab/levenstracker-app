@@ -9,14 +9,19 @@ import EntryModal from './EntryModal';
 import DaySummaryModal from './DaySummaryModal';
 
 export default function Dagboek() {
-  const { data } = useApp();
+  const { data, addLog } = useApp();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false);
   const [editingEntry, setEditingEntry] = useState(null);
 
   const dateString = getDateString(selectedDate);
-  const dayData = data.dagboek[dateString] || { entries: [], daySummary: null };
+  // Debug log for render lookup
+  // useEffect(() => { addLog(`Rendering Dagboek. Looking for: ${dateString}. Keys: ${Object.keys(data.dagboek.entries).join(', ')}`); }, [dateString, data.dagboek]); 
+  // We can't use useEffect inside restart easily without imports, let's just log if keys exist
+
+  const dayData = data.dagboek.entries[dateString] || { entries: [], daySummary: null }; // CHANGED: data.dagboek.entries vs data.dagboek logic check needed
+
 
   // Functie om te checken of een datum entries heeft
   const tileClassName = ({ date }) => {
