@@ -1,1 +1,1 @@
-export const APP_VERSION = "v1.5 - Emergency Fix";
+export const APP_VERSION = "v1.6 - Debug Tools";

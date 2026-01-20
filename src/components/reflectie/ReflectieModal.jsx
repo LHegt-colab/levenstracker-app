@@ -53,7 +53,7 @@ export default function ReflectieModal({ isOpen, onClose, date, existing }) {
       onClose();
     } catch (error) {
       console.error("Fout bij opslaan reflectie:", error);
-      alert("Er ging iets mis bij het opslaan. Probeer het opnieuw.");
+      alert(`Er ging iets mis bij het opslaan:\n\n${error.message || JSON.stringify(error)}\n\n(Maak een screenshot hiervan en stuur dit op)`);
     }
   };
 

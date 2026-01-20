@@ -60,7 +60,7 @@ export default function IdeeenModal({ isOpen, onClose, item }) {
       onClose();
     } catch (error) {
       console.error("Fout bij opslaan idee:", error);
-      alert("Er ging iets mis bij het opslaan. Probeer het opnieuw.");
+      alert(`Er ging iets mis bij het opslaan:\n\n${error.message || JSON.stringify(error)}\n\n(Maak een screenshot hiervan en stuur dit op)`);
     }
   };
 

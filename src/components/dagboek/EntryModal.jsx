@@ -68,7 +68,7 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
       onClose();
     } catch (error) {
       console.error("Fout bij opslaan entry:", error);
-      alert("Er ging iets mis bij het opslaan. Probeer het opnieuw.");
+      alert(`Er ging iets mis bij het opslaan:\n\n${error.message || JSON.stringify(error)}\n\n(Maak een screenshot hiervan en stuur dit op)`);
     }
   };
 
