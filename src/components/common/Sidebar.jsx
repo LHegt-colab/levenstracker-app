@@ -1,5 +1,6 @@
 import { Home, BookOpen, Bookmark, Lightbulb, Calendar, CheckSquare, Target, Eye, FileText, Utensils, Settings, X, Menu } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { APP_VERSION } from '../../version';
 
 const menuItems = [
   { path: '/', icon: Home, label: 'Dashboard' },
