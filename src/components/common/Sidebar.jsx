@@ -19,6 +19,7 @@ const menuItems = [
 
 export default function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
+  const { session } = useApp();
 
   const sidebarClasses = `
     fixed inset-y-0 left-0 z-40 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 
