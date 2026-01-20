@@ -108,7 +108,7 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={existingEntry ? "Bewerk Entry" : "Nieuwe Entry"} closeOnBackdropClick={false}>
+    <Modal isOpen={isOpen} onClose={onClose} title={entry ? "Bewerk Entry" : "Nieuwe Entry"} closeOnBackdropClick={false}>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Text Editor */}
         <div>
