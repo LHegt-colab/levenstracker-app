@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect } from 'react';
-import { useApp } from './AppContext';
+import { useApp } from './AppContextSupabase';
 
 const ThemeContext = createContext();
 
