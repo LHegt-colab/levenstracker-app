@@ -61,12 +61,7 @@ export default function ReflectieModal({ isOpen, onClose, date, existing }) {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title={existing ? 'Reflectie Bewerken' : 'Nieuwe Reflectie'}
-      size="lg"
-    >
+    <Modal isOpen={isOpen} onClose={onClose} title={`Dagelijkse Reflectie - ${new Date(date).toLocaleDateString()}`} closeOnBackdropClick={false}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-1">

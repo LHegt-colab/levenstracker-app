@@ -83,6 +83,7 @@ export default function WeeklyReflectieModal({ isOpen, onClose, reflection }) {
       onClose={onClose}
       title={reflection ? 'Wekelijkse Reflectie Bewerken' : 'Nieuwe Wekelijkse Reflectie'}
       size="lg"
+      closeOnBackdropClick={false}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">

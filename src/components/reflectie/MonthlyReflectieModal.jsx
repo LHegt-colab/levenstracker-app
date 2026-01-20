@@ -92,6 +92,7 @@ export default function MonthlyReflectieModal({ isOpen, onClose, reflection }) {
       onClose={onClose}
       title={reflection ? 'Maandelijkse Reflectie Bewerken' : 'Nieuwe Maandelijkse Reflectie'}
       size="lg"
+      closeOnBackdropClick={false}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">

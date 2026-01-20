@@ -108,8 +108,8 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={entry ? 'Entry Bewerken' : 'Nieuwe Entry'} size="lg">
-      <form onSubmit={handleSubmit} className="space-y-6">
+    <Modal isOpen={isOpen} onClose={onClose} title={existingEntry ? "Bewerk Entry" : "Nieuwe Entry"} closeOnBackdropClick={false}>
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Text Editor */}
         <div>
           <label className="block text-sm font-medium mb-2">Beschrijving</label>
@@ -179,8 +179,8 @@ export default function EntryModal({ isOpen, onClose, date, entry }) {
                 type="button"
                 onClick={() => toggleTag(tag)}
                 className={`px-3 py-1 rounded-full text-sm transition-colors duration-200 ${tags.includes(tag)
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
                   }`}
               >
                 {tag}

@@ -68,7 +68,7 @@ export default function IdeeenModal({ isOpen, onClose, item }) {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={item ? 'Idee Bewerken' : 'Nieuw Idee'}>
+    <Modal isOpen={isOpen} onClose={onClose} title={item ? 'Idee Bewerken' : 'Nieuw Idee'} closeOnBackdropClick={false}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-1">Titel *</label>
