@@ -1,13 +1,111 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300 font-medium;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 transition-shadow duration-300;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300;
+  }
+}
+
+/* React Quill Styles */
+.ql-container {
+  @apply rounded-b-lg border-gray-300 dark:border-gray-600;
+}
+
+.ql-toolbar {
+  @apply rounded-t-lg border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700;
+}
+
+.dark .ql-toolbar .ql-stroke {
+  stroke: #e5e7eb;
+}
+
+.dark .ql-toolbar .ql-fill {
+  fill: #e5e7eb;
+}
+
+.dark .ql-toolbar .ql-picker-label {
+  color: #e5e7eb;
+}
+
+.dark .ql-editor {
+  @apply bg-gray-700 text-gray-100;
+}
+
+/* React Calendar Styles */
+.react-calendar {
+  @apply w-full border-none bg-white dark:bg-gray-800 rounded-lg p-4;
+  font-family: inherit;
+}
+
+.react-calendar__navigation {
+  @apply mb-4;
+}
+
+.react-calendar__navigation button {
+  @apply min-h-12 text-lg font-semibold text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors;
+}
+
+.react-calendar__month-view__weekdays {
+  @apply text-sm font-semibold text-gray-600 dark:text-gray-400;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  @apply p-3 text-center;
+}
+
+.react-calendar__month-view__days__day {
+  @apply p-3 rounded-lg transition-colors text-gray-900 dark:text-gray-100;
+}
+
+.react-calendar__month-view__days__day:hover {
+  @apply bg-gray-100 dark:bg-gray-700;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.react-calendar__tile--now {
+  @apply bg-yellow-100 dark:bg-yellow-900 font-bold;
+}
+
+.react-calendar__tile--active {
+  @apply bg-primary text-white font-bold;
+}
+
+.react-calendar__tile--active:hover {
+  @apply bg-primary-dark;
+}
+
+.react-calendar__tile.has-entries {
+  @apply font-bold relative;
+}
+
+.react-calendar__tile.has-entries::after {
+  content: '';
+  @apply absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary;
+}
+
+.react-calendar__tile--active.has-entries::after {
+  @apply bg-white;
 }
