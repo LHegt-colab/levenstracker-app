@@ -43,14 +43,14 @@ export default function Ideeen() {
 
   return (
     <div className="space-y-6">
-      <div className="flex ideas-center justify-between">
+      <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Creatieve Ideeën</h1>
         <button
           onClick={() => {
             setEditItem(null);
             setIsModalOpen(true);
           }}
-          className="btn-primary flex ideas-center gap-2"
+          className="btn-primary flex items-center gap-2"
         >
           <Plus size={20} />
           Nieuw Idee
