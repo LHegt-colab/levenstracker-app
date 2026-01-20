@@ -16,7 +16,7 @@ export default function IdeenOverzicht() {
   const [copied, setCopied] = useState(false);
 
   const generateOverview = () => {
-    let ideas = data.ideeen.items.filter(item => {
+    let ideas = data.ideeen.ideas.filter(item => {
       const createdDate = new Date(item.createdAt);
       const dateStr = createdDate.toISOString().split('T')[0];
 

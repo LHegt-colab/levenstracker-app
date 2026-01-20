@@ -33,24 +33,24 @@ export default function Ideeen() {
   };
 
   const filteredItems = selectedCategory === 'all'
-    ? data.ideeen.items
-    : data.ideeen.items.filter(item => item.categoryId === selectedCategory);
+    ? data.ideeen.ideas
+    : data.ideeen.ideas.filter(item => item.categoryId === selectedCategory);
 
   const groupedByStatus = STATUS_OPTIONS.map(status => ({
     ...status,
-    items: filteredItems.filter(item => item.status === status.value),
+    ideas: filteredItems.filter(item => item.status === status.value),
   }));
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex ideas-center justify-between">
         <h1 className="text-3xl font-bold">Creatieve Ideeën</h1>
         <button
           onClick={() => {
             setEditItem(null);
             setIsModalOpen(true);
           }}
-          className="btn-primary flex items-center gap-2"
+          className="btn-primary flex ideas-center gap-2"
         >
           <Plus size={20} />
           Nieuw Idee
@@ -63,21 +63,21 @@ export default function Ideeen() {
           <button
             onClick={() => setSelectedCategory('all')}
             className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === 'all'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
-            Alle Ideeën ({data.ideeen.items.length})
+            Alle Ideeën ({data.ideeen.ideas.length})
           </button>
           {data.ideeen.categories.map(cat => {
-            const count = data.ideeen.items.filter(item => item.categoryId === cat.id).length;
+            const count = data.ideeen.ideas.filter(item => item.categoryId === cat.id).length;
             return (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-lg transition-colors ${selectedCategory === cat.id
-                    ? 'text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  ? 'text-white'
+                  : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
                   }`}
                 style={selectedCategory === cat.id ? { backgroundColor: cat.color } : {}}
               >

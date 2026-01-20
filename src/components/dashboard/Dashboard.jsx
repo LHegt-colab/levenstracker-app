@@ -38,7 +38,7 @@ export default function Dashboard() {
   }).sort((a, b) => b.currentStreak - a.currentStreak).slice(0, 3);
 
   // Recente items
-  const recentIdeas = data.ideeen.items.slice(-3).reverse();
+  const recentIdeas = data.ideeen.ideas.slice(-3).reverse();
   const recentCollection = data.verzameling.items.slice(-3).reverse();
 
   // Actieve doelen
@@ -177,8 +177,8 @@ export default function Dashboard() {
                     <div className="flex items-center justify-between">
                       <p className="font-medium">{idea.title}</p>
                       <span className={`px-2 py-1 text-xs rounded ${idea.priority === 'high' ? 'bg-danger text-white' :
-                          idea.priority === 'medium' ? 'bg-warning text-white' :
-                            'bg-gray-300 dark:bg-gray-600'
+                        idea.priority === 'medium' ? 'bg-warning text-white' :
+                          'bg-gray-300 dark:bg-gray-600'
                         }`}>
                         {idea.priority === 'high' ? 'Hoog' : idea.priority === 'medium' ? 'Medium' : 'Laag'}
                       </span>
