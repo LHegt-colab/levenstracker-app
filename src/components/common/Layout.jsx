@@ -5,7 +5,7 @@ import { useApp } from '../../contexts/AppContextSupabase';
 import Sidebar from './Sidebar';
 import BottomNav from './BottomNav';
 import Header from './Header';
-import DebugConsole from './DebugConsole';
+
 
 export default function Layout() {
   const { session } = useApp();
@@ -28,8 +28,6 @@ export default function Layout() {
       </div>
 
       <BottomNav />
-      {/* Debug Console Overlay */}
-      <DebugConsole />
     </div>
   );
 }

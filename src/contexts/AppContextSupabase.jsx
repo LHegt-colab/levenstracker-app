@@ -23,7 +23,7 @@ const IDEA_CATEGORIES = [
 export const AppProvider = ({ children }) => {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [debugLogs, setDebugLogs] = useState([]); // New Debug Log State
+    // const [debugLogs, setDebugLogs] = useState([]); // Removed Debug Log State
     const [data, setData] = useState({
         settings: { notificationsEnabled: false, targetKcal: 2000 },
         dagboek: { entries: {}, daySummaries: {} },
@@ -38,7 +38,7 @@ export const AppProvider = ({ children }) => {
 
     const addLog = (msg) => {
         const timestamp = new Date().toLocaleTimeString();
-        setDebugLogs(prev => [`[${timestamp}] ${msg}`, ...prev].slice(0, 50));
+        // console.log(`[${timestamp}] ${msg}`); // Simple console log only
     };
 
     // Auth Handling
@@ -110,12 +110,14 @@ export const AppProvider = ({ children }) => {
             // DAGBOEK
             const transformedDagboekEntries = {};
             dagboekEntries?.forEach(entry => {
-                if (!transformedDagboekEntries[entry.date]) transformedDagboekEntries[entry.date] = { entries: [], daySummary: null };
-                transformedDagboekEntries[entry.date].entries.push(entry);
+                const dateKey = entry.date && entry.date.includes('T') ? entry.date.split('T')[0] : entry.date;
+                if (!transformedDagboekEntries[dateKey]) transformedDagboekEntries[dateKey] = { entries: [], daySummary: null };
+                transformedDagboekEntries[dateKey].entries.push(entry);
             });
             dagboekSummaries?.forEach(summary => {
-                if (!transformedDagboekEntries[summary.date]) transformedDagboekEntries[summary.date] = { entries: [], daySummary: null };
-                transformedDagboekEntries[summary.date].daySummary = summary.summary;
+                const dateKey = summary.date && summary.date.includes('T') ? summary.date.split('T')[0] : summary.date;
+                if (!transformedDagboekEntries[dateKey]) transformedDagboekEntries[dateKey] = { entries: [], daySummary: null };
+                transformedDagboekEntries[dateKey].daySummary = summary.summary;
             });
 
             // GEWOONTES
@@ -689,7 +691,8 @@ export const AppProvider = ({ children }) => {
         addWeeklyReflection, updateWeeklyReflection, deleteWeeklyReflection,
         addMonthlyReflection, updateMonthlyReflection, deleteMonthlyReflection,
         addMeal, updateMeal, deleteMeal, setKcalTarget,
-        debugLogs, addLog, // Export debug tools
+        addMeal, updateMeal, deleteMeal, setKcalTarget,
+        addLog, // Keep addLog for internal use if needed, but no state
         refreshData: loadData // Allow manual refresh
     };
 

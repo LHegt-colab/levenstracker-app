@@ -25,8 +25,8 @@ export default function DagboekOverzicht() {
     let entries = [];
 
     // Verzamel alle dagboek entries binnen de periode
-    Object.keys(data.dagboek).forEach(dateStr => {
-      const dayData = data.dagboek[dateStr];
+    Object.keys(data.dagboek.entries).forEach(dateStr => {
+      const dayData = data.dagboek.entries[dateStr];
       if (!dayData.entries || dayData.entries.length === 0) return;
 
       let includeDate = false;
@@ -173,8 +173,8 @@ export default function DagboekOverzicht() {
           <button
             onClick={() => setPeriodType('dates')}
             className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'dates'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             Datums
@@ -182,8 +182,8 @@ export default function DagboekOverzicht() {
           <button
             onClick={() => setPeriodType('weeks')}
             className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'weeks'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             Weken
@@ -191,8 +191,8 @@ export default function DagboekOverzicht() {
           <button
             onClick={() => setPeriodType('months')}
             className={`px-4 py-2 rounded-lg transition-colors ${periodType === 'months'
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-primary text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
           >
             Maanden
